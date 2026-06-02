@@ -1,0 +1,81 @@
+[
+  {
+    "tcId": "TC_SF_001",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_002",
+    "products": [
+      {
+        "name": "Fitbit",
+        "searchItem": "Fitbit"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_004",
+    "products": [
+      {
+        "name": "Mac",
+        "searchItem": "Mac"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_005",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_006",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iLife"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_007",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "categoryValue": "27"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_008",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "categoryValue": "26"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_009",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "categoryValue": "26",
+        "brand": "Apple",
+        "defaultQuantity": "1",
+        "productCode": "Product 14",
+        "availability": "In Stock"
+      }
+    ]
+  }
+]

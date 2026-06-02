@@ -1,0 +1,34 @@
+{
+  "name": "playwright-framework",
+  "version": "1.0.0",
+  "description": "Creating playwright framework with typescript as a programming language.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "allure:generate": "allure generate ./reports/allure-results --clean -o ./reports/allure-report",
+    "allure:open": "allure open ./reports/allure-report",
+    "allure:serve": "allure serve ./reports/allure-results"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srilaxmi-1992/playwright-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/srilaxmi-1992/playwright-framework/issues"
+  },
+  "homepage": "https://github.com/srilaxmi-1992/playwright-framework#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "allure-playwright": "^3.9.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "csv-parse": "^6.2.1",
+    "xlsx": "^0.18.5"
+  }
+}
