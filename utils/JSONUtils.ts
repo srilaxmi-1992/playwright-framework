@@ -7,7 +7,8 @@ type productData = {
     brand?: string,
     defaultQuantity?: string,
     productCode?: string,
-    availability?: string
+    availability?: string,
+    successMessage?: string
 }
 export class JSONUtils {
     static getProductDetails(tcId: string): productData {

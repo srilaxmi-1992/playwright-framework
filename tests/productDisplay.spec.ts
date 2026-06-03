@@ -1,4 +1,3 @@
-import { expect } from "@playwright/test";
 import { test } from '../fixtures/pageFixtures';
 import { config } from "../config/config";
 import { JSONUtils } from "../utils/JSONUtils";
@@ -51,4 +50,23 @@ test('TC_SF_009 - Validate that Product Default Quantity is displayed in the Pro
     await searchPage.clickOnProduct(product.name)
     if (product.defaultQuantity)
         await productDisplayPage.validateDefaultQuantity(product.defaultQuantity)
+})
+
+test('TC_SF_010 - Validate Success message When user added product to Add to Cart', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
+
+    const product = JSONUtils.getProductDetails('TC_SF_010')
+
+    // clean cart
+    await myAccountHomePage.clickOnShoppingCart()
+    await shoppingCartPage.removeItemFromCart()
+    await myAccountHomePage.navigateToMyAccountHomePage()
+
+    await myAccountHomePage.performSearch(product.searchItem)
+    await searchPage.isLoaded()
+    await searchPage.validateSearchItemIsVisible(product.name)
+    await searchPage.clickOnProduct(product.name)
+    await productDisplayPage.addToCart()
+    if (product.successMessage)
+        await productDisplayPage.validateSuccessMessage(product.name, product.successMessage)
+
 })

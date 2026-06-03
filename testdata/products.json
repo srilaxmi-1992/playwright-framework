@@ -77,5 +77,40 @@
         "availability": "In Stock"
       }
     ]
+  },
+  {
+    "tcId": "TC_SF_010",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "categoryValue": "26",
+        "brand": "Apple",
+        "defaultQuantity": "1",
+        "productCode": "Product 14",
+        "availability": "In Stock",
+        "successMessage": "Success: You have added #product_name to your shopping cart!"
+      }
+    ]
+  },
+  {
+    "tcId": "TC_SF_011",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "successMessage": "Success: You have added #product_name to your shopping cart!"
+      }
+    ]
+  },
+   {
+    "tcId": "TC_SF_012",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "successMessage": "Success: You have added #product_name to your shopping cart!"
+      }
+    ]
   }
 ]

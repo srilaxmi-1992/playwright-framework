@@ -88,3 +88,9 @@ test('TC_SF_008 - Validate Search by selecting the wrong category of product', a
         console.log("No Category Provided")
     }
 })
+
+test.afterEach('Tear Down', async ({ myAccountHomePage }) => {
+    
+    await myAccountHomePage.logout()
+
+})

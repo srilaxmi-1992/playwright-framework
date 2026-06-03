@@ -5,6 +5,7 @@ import { SearchPage } from '../pages/SearchPage';
 import { MyAccountHomePage } from '../pages/MyAccountHomePage';
 import { config } from '../config/config';
 import { ProductDisplayPage } from '../pages/ProductDisplayPage';
+import { ShoppingCartPage } from '../pages/ShoppingCartPage'
 
 type PageFixtures = {
     homePage: HomePage
@@ -12,6 +13,7 @@ type PageFixtures = {
     searchPage: SearchPage
     myAccountHomePage: MyAccountHomePage
     productDisplayPage: ProductDisplayPage
+    shoppingCartPage: ShoppingCartPage
 };
 
 export const test = base.extend<PageFixtures>({
@@ -31,8 +33,11 @@ export const test = base.extend<PageFixtures>({
     myAccountHomePage: async ({ page }, use) => {
         await use(new MyAccountHomePage(page));
     },
-     productDisplayPage: async ({ page }, use) => {
+    productDisplayPage: async ({ page }, use) => {
         await use(new ProductDisplayPage(page));
+    },
+    shoppingCartPage: async ({ page }, use) => {
+        await use(new ShoppingCartPage(page));
     },
 
 });

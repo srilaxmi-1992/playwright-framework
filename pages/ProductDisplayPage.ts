@@ -11,6 +11,9 @@ export class ProductDisplayPage {
     readonly productQuantityInput: Locator
     readonly compareButton: Locator
     readonly compareSuccessMessage: Locator
+    readonly addToCartButton: Locator
+    readonly shoppingCartLink: Locator
+
     constructor(page: Page) {
 
         this.page = page
@@ -21,7 +24,14 @@ export class ProductDisplayPage {
         this.productQuantityInput = page.getByRole('textbox', { name: 'Qty' })
         this.compareButton = page.locator('div.col-sm-4 [data-original-title="Compare this Product"]')
         this.compareSuccessMessage = page.locator('div.alert-success')
+        this.addToCartButton = page.getByRole('button', { name: 'Add to Cart', exact : true })
+        this.shoppingCartLink = page.getByRole('link', { name: 'shopping cart', exact : true })
 
+    }
+
+
+    async addToCart() {
+        await this.addToCartButton.click()
     }
 
     async validateProductHeading(productName: string) {
@@ -48,7 +58,14 @@ export class ProductDisplayPage {
         await this.compareButton.click()
     }
 
-    async validateSuccessMessage(productName: string) {
-        await expect(this.compareSuccessMessage).toContainText(`Success: You have added ${productName} to your product comparison!`)
+    async validateSuccessMessage(productName: string, successMessage: string) {
+        successMessage = successMessage.replace("#product_name", productName)
+        await expect(this.compareSuccessMessage).toContainText(successMessage)
     }
+
+    async clickOnShoppingCartLink() {
+        await this.shoppingCartLink.click()
+    }
+
+
 }
