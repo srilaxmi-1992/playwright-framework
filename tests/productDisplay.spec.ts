@@ -9,7 +9,7 @@ test.beforeEach('Test setup', async ({ homePage, loginPage }) => {
     await loginPage.isLoaded()
 })
 
-test('TC_SF_009 - Validate that Product Name is displayed in the Product Display Page', async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
+test('TC_SF_009 - Validate that Product Name is displayed in the Product Display Page', {tag : '@smoke'},async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_009')
     await myAccountHomePage.performSearch(product.searchItem)
@@ -19,7 +19,7 @@ test('TC_SF_009 - Validate that Product Name is displayed in the Product Display
     await productDisplayPage.validateProductHeading(product.name)
 })
 
-test('TC_SF_009 - Validate that Product Brand is displayed in the Product Display Page', async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
+test('TC_SF_009 - Validate that Product Brand is displayed in the Product Display Page', {tag : '@regression'},async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_009')
     await myAccountHomePage.performSearch(product.searchItem)
@@ -30,7 +30,7 @@ test('TC_SF_009 - Validate that Product Brand is displayed in the Product Displa
         await productDisplayPage.validateProductBrand(product.brand)
 })
 
-test('TC_SF_009 - Validate that Product Availability is displayed in the Product Display Page', async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
+test('TC_SF_009 - Validate that Product Availability is displayed in the Product Display Page', {tag : '@regression'},async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_009')
     await myAccountHomePage.performSearch(product.searchItem)
@@ -41,7 +41,7 @@ test('TC_SF_009 - Validate that Product Availability is displayed in the Product
         await productDisplayPage.validateProductAvailability(product.availability)
 })
 
-test('TC_SF_009 - Validate that Product Default Quantity is displayed in the Product Display Page', async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
+test('TC_SF_009 - Validate that Product Default Quantity is displayed in the Product Display Page', {tag : '@regression'},async ({ myAccountHomePage, searchPage, productDisplayPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_009')
     await myAccountHomePage.performSearch(product.searchItem)
@@ -52,7 +52,7 @@ test('TC_SF_009 - Validate that Product Default Quantity is displayed in the Pro
         await productDisplayPage.validateDefaultQuantity(product.defaultQuantity)
 })
 
-test('TC_SF_010 - Validate Success message When user added product to Add to Cart', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
+test('TC_SF_010 - Validate Success message When user added product to Add to Cart', {tag : '@smoke'}, async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_010')
 

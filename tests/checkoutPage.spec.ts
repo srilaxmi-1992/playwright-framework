@@ -18,14 +18,14 @@ test.beforeEach('Test setup', async ({ homePage, loginPage, myAccountHomePage, s
 
 })
 
-test('TC_SF_014 - Validate navigating to Checkout page when there are no products added to the Shopping Cart', async ({ myAccountHomePage, shoppingCartPage }) => {
+test('TC_SF_014 - Validate navigating to Checkout page when there are no products added to the Shopping Cart',  {tag : '@regression'}, async ({ myAccountHomePage, shoppingCartPage }) => {
 
     await myAccountHomePage.clickOnCheckoutLink()
     await shoppingCartPage.isShoppingCartLoaded()
    
 })
 
-test('TC_SF_015 - Validate navigating to Shopping Cart page from the Success message', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage, checkoutPage }) => {
+test('TC_SF_015 - Validate navigating to Checkout page', {tag : '@sanity'}, async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage, checkoutPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_015')
 

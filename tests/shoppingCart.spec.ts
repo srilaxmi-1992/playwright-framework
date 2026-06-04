@@ -18,7 +18,7 @@ test.beforeEach('Test setup', async ({ homePage, loginPage, myAccountHomePage, s
 
 })
 
-test('TC_SF_011 - Validate navigating to Shopping Cart page from the Success message', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
+test('TC_SF_011 - Validate navigating to Shopping Cart page from the Success message', {tag : '@sanity'}, async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_011')
 
@@ -33,7 +33,7 @@ test('TC_SF_011 - Validate navigating to Shopping Cart page from the Success mes
 })
 
 
-test('TC_SF_012 - Validate navigating to Shopping Cart page from the Success message', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
+test('TC_SF_012 - Validate navigating to Shopping Cart page from the Success message', {tag : '@sanity'}, async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
 
     const product = JSONUtils.getProductDetails('TC_SF_012')
 
@@ -48,7 +48,7 @@ test('TC_SF_012 - Validate navigating to Shopping Cart page from the Success mes
 
 })
 
-test('TC_SF_013 - Validate the Cart button when there are no products added to the Shopping Cart', async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
+test('TC_SF_013 - Validate the Cart button when there are no products added to the Shopping Cart', {tag : '@regression'}, async ({ myAccountHomePage, searchPage, productDisplayPage, shoppingCartPage }) => {
 
     
     await myAccountHomePage.clickOnShoppingCart()
