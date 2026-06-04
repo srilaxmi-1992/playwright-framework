@@ -112,5 +112,15 @@
         "successMessage": "Success: You have added #product_name to your shopping cart!"
       }
     ]
+  },
+  {
+    "tcId": "TC_SF_015",
+    "products": [
+      {
+        "name": "iMac",
+        "searchItem": "iMac",
+        "successMessage": "Success: You have added #product_name to your shopping cart!"
+      }
+    ]
   }
 ]

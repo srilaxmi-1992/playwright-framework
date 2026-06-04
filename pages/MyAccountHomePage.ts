@@ -8,6 +8,7 @@ export class MyAccountHomePage {
     readonly myAccountText: Locator
     readonly myAccountLink: Locator
     readonly logoutLink: Locator
+    readonly checkoutLink: Locator
 
     readonly page: Page
 
@@ -20,7 +21,12 @@ export class MyAccountHomePage {
         this.myAccountText = page.locator('span:has-text("My Account")')
         this.myAccountLink = page.getByTitle('My Account', { exact: true })
         this.logoutLink = page.getByRole('link', { name: 'Logout' })
+        this.checkoutLink = page.getByTitle('Checkout', { exact: true })
 
+    }
+
+    async clickOnCheckoutLink() {
+        await this.checkoutLink.click()
     }
 
     async navigateToMyAccountHomePage() {
@@ -45,7 +51,7 @@ export class MyAccountHomePage {
     }
 
     async clickOnShoppingCart() {
-        
+
         await this.shoppingCartLink.click()
     }
 
