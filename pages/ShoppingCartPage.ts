@@ -16,7 +16,7 @@ export class ShoppingCartPage {
         this.removeCartButton = page.locator('button[data-original-title="Remove"]')
         this.shoppingCartDiv = page.locator('div#content')
         this.emptyShoppingCart = this.shoppingCartDiv.getByText('Your shopping cart is empty!')
-        this.checkoutButton = page.locator('div.buttons a').filter({hasText: 'Checkout'})
+        this.checkoutButton = page.locator('div.buttons a').filter({ hasText: 'Checkout' })
     }
 
     async addItemToCart() {
@@ -27,8 +27,12 @@ export class ShoppingCartPage {
     }
 
     async removeItemFromCart() {
-        if (!await this.emptyShoppingCart.isVisible())
-            await this.removeCartButton.click()
+        if (!await this.emptyShoppingCart.isVisible()) {
+            const count = await this.removeCartButton.count();
+            for (let i = 0; i < count; i++) {
+                await this.removeCartButton.nth(i).click();
+            }
+        }
 
         await expect(this.emptyShoppingCart).toBeVisible()
     }
