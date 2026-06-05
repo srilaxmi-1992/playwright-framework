@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { config } from "../../config/config";
-import {  BookingUtils } from '../../utils/BookingUtils';
-import { BookingDataUtils } from "../../utils/BookingDataUtils";
+import { BookingUtils } from '../../utils/BookingUtils';
+import { JSONUtils } from "../../utils/JSONUtils";
 
 let token: string = ""
 test.beforeEach('Login To API Tests Generate Token', async ({ request }) => {
@@ -24,10 +24,9 @@ test.beforeEach('Login To API Tests Generate Token', async ({ request }) => {
 
 })
 
-test('Create Booking', { tag : '@api'},async ({ request }) => {
+test('Create Booking', { tag: '@api' }, async ({ request }) => {
 
-    const bookingData =
-        BookingDataUtils.getBooking('TC_API_001');
+    const { tcId: _, ...bookingData } = JSONUtils.getBooking('TC_API_001');
 
     const response = await request.post(
         `${config.apiBaseURL}/booking`,
@@ -35,7 +34,7 @@ test('Create Booking', { tag : '@api'},async ({ request }) => {
             data: bookingData,
             headers: {
                 'Content-Type': 'application/json',
-                 Accept: 'application/json'
+                Accept: 'application/json'
             }
         }
     );
@@ -48,33 +47,28 @@ test('Create Booking', { tag : '@api'},async ({ request }) => {
     expect(responseBody.booking).toMatchObject(bookingData);
 });
 
-test('Get Booking', { tag : '@api'},async ({ request }) => {
+test('Get Booking', { tag: '@api' }, async ({ request }) => {
 
-  const bookingData = BookingDataUtils.getBooking('TC_API_001');
+    const { tcId: _, ...bookingData } = JSONUtils.getBooking('TC_API_001');
 
-  const bookingId = await BookingUtils.createBooking(
-      request,
-      bookingData
+    const bookingId = await BookingUtils.createBooking(
+        request,
+        bookingData
     );
 
-  const response = await request.get(
-    `${config.apiBaseURL}/booking/${bookingId}`
-  );
+    const response = await request.get(
+        `${config.apiBaseURL}/booking/${bookingId}`
+    );
 
-  expect(response.status()).toBe(200);
+    expect(response.status()).toBe(200);
 
-  const responseBody = await response.json();
-
-  expect(responseBody).toMatchObject(bookingData);
+    const responseBody = await response.json();
+    expect(responseBody).toMatchObject(bookingData);
 });
 
-test('Update Booking', { tag : '@api'}, async ({ request }) => {
-
-    const createBookingData =
-        BookingDataUtils.getBooking('TC_API_001');
-
-    const updateBookingData =
-        BookingDataUtils.getBooking('TC_API_002');
+test('Update Booking', { tag: '@api' }, async ({ request }) => {
+    const { tcId: _, ...createBookingData } = JSONUtils.getBooking('TC_API_001');
+    const { tcId: __, ...updateBookingData } = JSONUtils.getBooking('TC_API_002');
 
     const bookingId = await BookingUtils.createBooking(
         request,
@@ -85,25 +79,24 @@ test('Update Booking', { tag : '@api'}, async ({ request }) => {
         `${config.apiBaseURL}/booking/${bookingId}`,
         {
             headers: {
-                 Cookie: `token=${token}`,
+                Cookie: `token=${token}`,
                 'Content-Type': 'application/json',
-                 Accept: 'application/json'
+                Accept: 'application/json'
             },
             data: updateBookingData
         }
     );
 
     expect(response.status()).toBe(200);
-
     const responseBody = await response.json();
 
     expect(responseBody).toMatchObject(updateBookingData);
 });
 
-test('Delete Booking', { tag : '@api'},async ({ request }) => {
+test('Delete Booking', { tag: '@api' }, async ({ request }) => {
 
-    const bookingData =
-        BookingDataUtils.getBooking('TC_API_001');
+    const bookingRecord = JSONUtils.getBooking('TC_API_001');
+    const { tcId, ...bookingData } = bookingRecord;
 
     const bookingId = await BookingUtils.createBooking(
         request,

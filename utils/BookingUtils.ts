@@ -1,6 +1,6 @@
 import { APIRequestContext, expect } from '@playwright/test';
 import { config } from '../config/config';
-import { BookingData } from './BookingDataUtils';
+import { BookingData } from '../utils/booking.types';
 
 export class BookingUtils {
 

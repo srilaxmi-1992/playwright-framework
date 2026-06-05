@@ -1,42 +1,47 @@
-import productsJson from "../testdata/products.json";
+import fs from 'fs';
+import { BookingTestData } from "../utils/booking.types";
+import { ProductTestData } from "../utils/product.types";
 
-type ProductData = {
-  name: string;
-  searchItem: string;
-  categoryValue?: string;
-  brand?: string;
-  defaultQuantity?: string;
-  productCode?: string;
-  availability?: string;
-  successMessage?: string;
-};
-
-type ProductTestData = {
-  tcId: string;
-  products: ProductData[];
-};
-
-const data = productsJson as ProductTestData[];
 
 export class JSONUtils {
 
-  static getProductDetails(tcId: string): ProductData {
-    const testCase = data.find(d => d.tcId === tcId);
-
-    if (!testCase || !testCase.products.length) {
-      throw new Error(`No product found for TCID: ${tcId}`);
-    }
-
-    return testCase.products[0];
+  static readJsonFile<T>(filePath: string): T {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
   }
 
-  static getProducts(tcId: string): ProductData[] {
-    const testCase = data.find(d => d.tcId === tcId);
+  static getByTcId<T extends { tcId: string }>(filePath: string, tcId: string): T {
 
-    if (!testCase) {
-      throw new Error(`TCID not found: ${tcId}`);
+    const data = this.readJsonFile<T[]>(filePath);
+    const record = data.find(d => d.tcId === tcId);
+    if (!record) {
+      throw new Error(`No data found for TCID: ${tcId}`);
     }
-    
-    return testCase.products;
+
+    return record;
+  }
+
+  static getBooking(tcId: string) {
+    const booking = JSONUtils.getByTcId<BookingTestData>(
+      './testdata/bookings.json',
+      tcId
+    );
+    return booking
+  }
+
+  static getProducts(tcId: string) {
+    const product = JSONUtils.getByTcId<ProductTestData>(
+      './testdata/products.json',
+      tcId
+    );
+    return product.products
+  }
+
+
+  static getProductDetails(tcId: string) {
+    const product = JSONUtils.getByTcId<ProductTestData>(
+      './testdata/products.json',
+      tcId
+    );
+    return product.products[0]
   }
 }
