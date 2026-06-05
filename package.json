@@ -8,6 +8,7 @@
     "smoke": "playwright test --grep \"@smoke\"",
     "regression": "playwright test --grep \"@regression\"",
     "sanity": "playwright test --grep \"@sanity\"",
+    "api": "playwright test --grep \"@api\"",
     "allure:generate": "allure generate ./reports/allure-results --clean -o ./reports/allure-report",
     "allure:open": "allure open ./reports/allure-report",
     "allure:serve": "allure serve ./reports/allure-results"
